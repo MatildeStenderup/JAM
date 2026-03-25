@@ -105,7 +105,7 @@ body {
     right: -6px; /* Centered over the line */
     width: 16px;
     height: 16px;
-    background-color: #FF0000;
+    /*background-color: #FF0000;*/
     border: 3px solid #ddd;
     border-radius: 50%;
     z-index: 101;
@@ -117,7 +117,7 @@ body {
 .stop-3 { top: 90%; }
 
 .stop.active {
-    border-color: #333;
+    border-color: #ddd;
     background-color: #333;
     animation: pulseStop 2s infinite;
 }
