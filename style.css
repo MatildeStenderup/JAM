@@ -112,9 +112,9 @@ body {
     transition: all 0.3s ease;
 }
 
-.stop-1 { top: 55%; }
-.stop-2 { top: 71%; }
-.stop-3 { top: 87%; }
+.stop-1 { top: 40%; }
+.stop-2 { top: 62%; }
+.stop-3 { top: 83%; }
 
 .stop.active {
     border-color: #ddd;
