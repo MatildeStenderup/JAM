@@ -95,7 +95,7 @@ body {
     right: 0;
     width: 4px;
     height: 0%; /* Controlled by JavaScript scroll percentage */
-    background: #333; 
+    background: #FF0000; 
     transition: height 0.1s ease-out;
 }
 
@@ -105,7 +105,7 @@ body {
     right: -6px; /* Centered over the line */
     width: 16px;
     height: 16px;
-    background-color: #fff;
+    background-color: #FF0000;
     border: 3px solid #ddd;
     border-radius: 50%;
     z-index: 101;
