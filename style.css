@@ -131,7 +131,7 @@ body {
 
 .stop.active {
     border-color: #ddd;
-    background-color: #333;
+    background-color: #FF0000;
     animation: pulseStop 2s infinite;
 }
 
