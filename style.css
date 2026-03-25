@@ -62,7 +62,7 @@ body {
 /* RIGHT-ALIGNED LINE (IN FRONT OF PICTURES) */
 .line-container {
     position: absolute;
-    right: 40px; /* Aligns to the right edge of content */
+    right: 0px; /* Aligns to the right edge of content */
     left: auto;
     top: 0;
     bottom: 0;
