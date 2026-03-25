@@ -264,3 +264,68 @@ body {
     40% {transform: translateY(-10px);}
     60% {transform: translateY(-5px);}
 }
+.story-container {
+    position: relative; /* Essential for the line to anchor */
+}
+
+.line-container {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    transform: translateX(-50%);
+    z-index: -1; /* Sits behind content */
+}
+
+/* The background dashed track */
+.line-track {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: repeating-linear-gradient(
+        to bottom,
+        #ddd,
+        #ddd 10px,
+        transparent 10px,
+        transparent 20px
+    );
+    left: 1px;
+}
+
+/* The actual "Following" line */
+.line-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0%; /* Controlled by JavaScript */
+    background: #333; /* Darker color to show progress */
+    transition: height 0.1s ease-out;
+}
+
+.stop {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border: 3px solid #ddd;
+    border-radius: 50%;
+    z-index: 5;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Initial stop positions */
+.stop-1 { top: 20%; }
+.stop-2 { top: 50%; }
+.stop-3 { top: 85%; }
+
+/* When the line "hits" a stop, we can highlight it via JS */
+.stop.active {
+    border-color: #333;
+    background-color: #333;
+    animation: pulseStop 2s infinite;
+}
