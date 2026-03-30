@@ -8,85 +8,69 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const lineFill = document.getElementById('line-fill');
-        const container = document.querySelector('.story-container');
-        const stops = document.querySelectorAll('.stop');
-        
-        // 1. Function to align stops with H2 titles
-        const alignStopsWithTitles = () => {
-            const steps = ['#step1', '#step2', '#step3'];
-            
-            steps.forEach((stepId, index) => {
-                const stepElement = document.querySelector(stepId);
-                const title = stepElement.querySelector('h2');
-                const stop = document.querySelector(`.stop-${index + 1}`);
-                
-                if (title && stop) {
-                    // Calculate title position relative to the .story-container
-                    const containerRect = container.getBoundingClientRect();
-                    const titleRect = title.getBoundingClientRect();
-                    const relativeTop = titleRect.top - containerRect.top;
-                    
-                    // Move the dot to that exact pixel height
-                    stop.style.top = `${relativeTop + (title.offsetHeight / 2)}px`;
-                }
-            });
-        };
+        document.addEventListener('DOMContentLoaded', () => {
+            const lineFill = document.getElementById('line-fill');
+            const container = document.querySelector('.story-container');
+            const stops = document.querySelectorAll('.stop');
+            
+            const alignStopsWithTitles = () => {
+                const steps = ['#step1', '#step2', '#step3'];
+                steps.forEach((stepId, index) => {
+                    const stepElement = document.querySelector(stepId);
+                    const title = stepElement.querySelector('h2');
+                    const stop = document.querySelector(`.stop-${index + 1}`);
+                    if (title && stop) {
+                        const containerRect = container.getBoundingClientRect();
+                        const titleRect = title.getBoundingClientRect();
+                        const relativeTop = titleRect.top - containerRect.top;
+                        stop.style.top = `${relativeTop + (title.offsetHeight / 2)}px`;
+                    }
+                });
+            };
 
-        // Run alignment on load and if window resizes
-        alignStopsWithTitles();
-        window.addEventListener('resize', alignStopsWithTitles);
+            alignStopsWithTitles();
+            window.addEventListener('resize', alignStopsWithTitles);
 
-        // 2. Scroll Logic for the Red Line Fill
-        window.addEventListener('scroll', () => {
-            const containerOffset = container.offsetTop;
-            const containerHeight = container.offsetHeight;
-            
-            // We calculate based on the middle of the viewport
-            const scrollPosition = window.scrollY - containerOffset + (window.innerHeight / 2);
-            
-            let scrollPercent = (scrollPosition / containerHeight) * 100;
-            
-            // Constrain between 0 and 100
-            scrollPercent = Math.max(0, Math.min(scrollPercent, 100));
-            
-            // Update the red line height
-            lineFill.style.height = scrollPercent + "%";
+            window.addEventListener('scroll', () => {
+                const containerOffset = container.offsetTop;
+                const containerHeight = container.offsetHeight;
+                const scrollPosition = window.scrollY - containerOffset + (window.innerHeight / 2);
+                let scrollPercent = (scrollPosition / containerHeight) * 100;
+                scrollPercent = Math.max(0, Math.min(scrollPercent, 100));
+                
+                lineFill.style.height = scrollPercent + "%";
 
-            // 3. Highlight stops as the red line passes them
-            stops.forEach(stop => {
-                // Get current stop position as a percentage of total container height
-                const stopPercent = (stop.offsetTop / containerHeight) * 100;
-                
-                if (scrollPercent >= stopPercent) {
-                    stop.classList.add('active');
-                } else {
-                    stop.classList.remove('active');
-                }
-            });
-        });
-    });
-    function toggleImage() {
-    const img = document.getElementById('zoomable-img');
-    img.classList.toggle('fullscreen');
-    
-    // Optional: Prevent scrolling when image is full screen
-    if (img.classList.contains('fullscreen')) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = 'auto';
-    }
-}
+                stops.forEach(stop => {
+                    const stopPercent = (stop.offsetTop / containerHeight) * 100;
+                    if (scrollPercent >= stopPercent) {
+                        stop.classList.add('active');
+                    } else {
+                        stop.classList.remove('active');
+                    }
+                });
+            });
+        });
 
-// Close image if user clicks anywhere else
-window.addEventListener('click', (e) => {
-    const img = document.getElementById('zoomable-img');
-    if (img.classList.contains('fullscreen') && e.target !== img) {
-        toggleImage();
-    }
-});
-</script>
+        // Toggle Fullscreen Image
+        function toggleImage() {
+            const img = document.getElementById('zoomable-img');
+            img.classList.toggle('fullscreen');
+            
+            if (img.classList.contains('fullscreen')) {
+                document.body.style.overflow = 'hidden'; // Stop scrolling
+            } else {
+                document.body.style.overflow = 'auto'; // Resume scrolling
+            }
+        }
+
+        // Close image if user clicks background
+        window.addEventListener('click', (e) => {
+            const img = document.getElementById('zoomable-img');
+            if (img.classList.contains('fullscreen') && e.target !== img) {
+                toggleImage();
+            }
+        });
+    </script>
 <body>
 
     <header class="hero">
