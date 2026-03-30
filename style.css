@@ -281,4 +281,37 @@ body {
     .inner-box h2 {
         font-size: 1.6rem;
     }
+   /* Normal state */
+.clickable-image {
+    width: 100%;
+    height: auto;
+    transition: all 0.3s ease;
+    cursor: zoom-in;
+    z-index: 1;
+}
+
+/* Fullscreen state */
+.clickable-image.fullscreen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw; /* Takes up 90% of screen width */
+    height: auto;
+    max-height: 90vh;
+    object-fit: contain;
+    z-index: 1000;
+    cursor: zoom-out;
+    box-shadow: 0 0 100px rgba(0,0,0,0.8);
+}
+
+/* Optional: Darken the background when image is big */
+.clickable-image.fullscreen::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.7);
+    z-index: -1;
+}
 }
