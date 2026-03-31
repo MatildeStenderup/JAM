@@ -241,25 +241,18 @@ body {
     .visual-block { flex: 0 0 100%; position: relative; top: 0; height: 350px; width: 100%; }
 }
 .expandable-image {
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: zoom-in;
+    transition: all 0.3s ease; /* Smooth transition */
 }
+
 .expandable-image.fullscreen {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: contain;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90vw;
+    max-height: 90vh;
     z-index: 9999;
-    background: rgba(0, 0, 0, 0.9);
-}
-.expandable-image.fullscreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: contain;
-    z-index: 9999;
-    background: rgba(0, 0, 0, 0.9);
+    cursor: zoom-out;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.5);
 }
