@@ -242,7 +242,7 @@ body {
 }
 .expandable-image {
     cursor: zoom-in;
-   /* transition: all 0.3s ease;  Smooth transition */
+   transition: all 0.3s ease;  /* Smooth transition */
 }
 
 .expandable-image.fullscreen {
