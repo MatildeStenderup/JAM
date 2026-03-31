@@ -243,3 +243,23 @@ body {
 .expandable-image {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
+.expandable-image.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.9);
+}
+.expandable-image.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.9);
+}
