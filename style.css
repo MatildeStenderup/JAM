@@ -261,17 +261,20 @@ body {
 
 
 
-/* FORCE SCALE HACK */
+/* Justeret Force Scale - får kortet til at fylde mere */
 .chart-placeholder iframe {
-    width: 150% !important;  /* Gør det interaktive indhold bredere internt */
-    height: 150% !important; /* Gør det interaktive indhold højere internt */
-    transform: scale(0.66);  /* Zoomer det hele ned til 66% størrelse */
-    transform-origin: 0 0;   /* Bevarer placeringen i øverste venstre hjørne */
+    width: 125% !important;  /* Lidt mindre bredde internt end før */
+    height: 125% !important; /* Lidt mindre højde internt end før */
+    transform: scale(0.8);   /* Zoomer kun ned til 80% i stedet for 66% */
+    transform-origin: center center; /* Centrerer zoomet så det fylder boksen ud */
     border: none;
     display: block;
+    margin: 0 auto;         /* Centrerer rammen horisontalt */
 }
 
 .chart-placeholder {
-    overflow: hidden; /* Sikrer at det overskydende "zoom" ikke ses */
-    display: block;   /* Fjern flex her, da det driller med scale */
+    overflow: hidden; 
+    display: block;          /* Vi bruger flex igen til at centrere det skalerede kort */
+    justify-content: center;
+    align-items: center;
 }
