@@ -270,7 +270,7 @@ body {
     
     /* Vi bruger transform til både at styre placering (x, y) og zoom (scale) */
     /* 1. tal i translate er X (højre/venstre), 2. tal er Y (op/ned) */
-    transform: translate(0px, -40px) scale(0.8); 
+    transform: translate(0px, -70px) scale(0.8); 
     
     /* Vi låser origin til toppen, så vores translate-tal er nemmere at styre */
     transform-origin: top center; 
@@ -281,6 +281,5 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #fff;
     height: 100%; /* Sørg for at den fylder hele den hvide boks */
 }
