@@ -269,15 +269,15 @@ body {
 
 
 .chart-placeholder iframe {
-    width: 100% !important;  
-    height: 100% !important; 
+    width: 110% !important;  
+    height: 110% !important; 
     border: none;
     display: block;
     
     position: absolute;
-    top: 50%;
+    top: 42%; 
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.95); 
+    transform: translate(-50%, -50%) scale(0.8); 
     
     transform-origin: center;
 }
@@ -288,6 +288,5 @@ body {
     position: relative;
     overflow: hidden;
     background: #fff;
-    /* Fjern alt padding hvis der er noget */
     padding: 0 !important;
 }
