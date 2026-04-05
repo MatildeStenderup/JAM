@@ -262,8 +262,8 @@ body {
 
 
 .chart-placeholder iframe {
-    width: 130% !important;  /* Vi gør den lidt bredere for at give plads til søjlen */
-    height: 120% !important; 
+    width: 100% !important;  /* Vi gør den lidt bredere for at give plads til søjlen */
+    height: 100% !important; 
     border: none;
     display: block;
     
