@@ -268,21 +268,18 @@ body {
 }
 
 
-/* Adjust force scale - so the map fill more */
 .chart-placeholder iframe {
-    width: 125% !important;
-    height: 125% !important;
-    transform: scale(0.8);
-    transform-origin: center center;
-    border: none;
-    display: block;
-    margin: 0 auto;
+    width: 120% !important;  
+    height: 120% !important; 
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(0.85) !important; 
+    border: none !important;
 }
 
 .chart-placeholder {
-    overflow: hidden; 
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    background: #fff;
+    position: relative !important;
+    height: 100% !important;
+    overflow: hidden !important;
 }
