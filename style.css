@@ -266,16 +266,18 @@ body {
     border: none;
     display: block;
 }
-/* Makes sure the iframe fits the chart */
+
+/* FORCE SCALE HACK */
 .chart-placeholder iframe {
-    width: 100%;
-    height: 100%;
+    width: 150% !important;  /* Gør det interaktive indhold bredere internt */
+    height: 150% !important; /* Gør det interaktive indhold højere internt */
+    transform: scale(0.66);  /* Zoomer det hele ned til 66% størrelse */
+    transform-origin: 0 0;   /* Bevarer placeringen i øverste venstre hjørne */
     border: none;
     display: block;
-    overflow: hidden; /* remove scroll */
 }
 
-/* Makes sure not to cut the map random */
-.visual-block {
-    overflow: hidden;
+.chart-placeholder {
+    overflow: hidden; /* Sikrer at det overskydende "zoom" ikke ses */
+    display: block;   /* Fjern flex her, da det driller med scale */
 }
