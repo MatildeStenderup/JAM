@@ -315,12 +315,7 @@ body {
 body.no-scroll {
     overflow: hidden;
 }
-hr {
-    margin-top: 20px;    /* Space above the line */
-    margin-bottom: 40px; /* Space below the line - adjust this number to your liking */
-    border: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Makes the line a subtle white */
-}
+
 
 /* This invisible layer sits on top of the map */
 .click-shield {
