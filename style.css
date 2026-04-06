@@ -322,3 +322,33 @@ hr {
     border-top: 1px solid rgba(255, 255, 255, 0.2); /* Makes the line a subtle white */
 }
 
+/* This invisible layer sits on top of the map */
+.click-shield {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; /* Sits above the iframe */
+    cursor: zoom-in;
+}
+
+/* When the iframe is fullscreen, hide the shield so we can use the map */
+.expandable-iframe.fullscreen + .click-shield, 
+.fullscreen ~ .click-shield {
+    display: none;
+}
+
+/* Ensure the iframe behaves exactly like the image when fullscreen */
+.expandable-iframe.fullscreen {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90vw !important;
+    height: 80vh !important;
+    z-index: 9999;
+    background: white;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+    border-radius: 8px;
+}
