@@ -308,251 +308,106 @@ Moving forward, a truly effective approach to public safety requires acknowledgi
         </div>
 
     </footer>
-
 <script>
-
 document.addEventListener('DOMContentLoaded', () => {
-
-
-
     const lineFill = document.getElementById('line-fill');
-
     const container = document.querySelector('.story-container');
-
     const stops = document.querySelectorAll('.stop');
 
-
-
     // ========================
-
-    // ALIGN STOPS
-
+    // 1. ALIGN STOPS WITH TITLES
     // ========================
-
     const alignStopsWithTitles = () => {
-
         const steps = ['#step1', '#step2', '#step3'];
-
-
-
         steps.forEach((stepId, index) => {
-
             const stepElement = document.querySelector(stepId);
-
             const stop = document.querySelector(`.stop-${index + 1}`);
-
-
-
-            // Safety check: only proceed if these elements actually exist!
-
             if (stepElement && stop) {
-
                 const title = stepElement.querySelector('h2');
-
                 if (!title) return;
-
-
-
                 const containerRect = container.getBoundingClientRect();
-
                 const titleRect = title.getBoundingClientRect();
-
-                const relativeTop = titleRect.top - containerRect.top;
-
-
-
+                const relativeTop = (titleRect.top + window.scrollY) - (containerRect.top + window.scrollY);
                 stop.style.top = `${relativeTop + (title.offsetHeight / 2)}px`;
-
             }
-
         });
-
     };
 
-
-
-    // Only run alignment if container exists
-
     if (container) {
-
         alignStopsWithTitles();
-
         window.addEventListener('resize', alignStopsWithTitles);
-
     }
 
-
-
     // ========================
-
-    // SCROLL LINE LOGIC
-
+    // 2. SCROLL LINE LOGIC
     // ========================
-
     window.addEventListener('scroll', () => {
-
-        // Safety check to prevent crashes
-
         if (!container || !lineFill) return;
-
-
-
         const containerOffset = container.offsetTop;
-
         const containerHeight = container.offsetHeight;
-
         const scrollPosition = window.scrollY - containerOffset + (window.innerHeight / 2);
-
-
-
         let scrollPercent = (scrollPosition / containerHeight) * 100;
-
         scrollPercent = Math.max(0, Math.min(scrollPercent, 100));
-
-
-
         lineFill.style.height = scrollPercent + "%";
 
-
-
         stops.forEach(stop => {
-
             const stopPercent = (stop.offsetTop / containerHeight) * 100;
-
-
-
             if (scrollPercent >= stopPercent) {
-
                 stop.classList.add('active');
-
             } else {
-
                 stop.classList.remove('active');
-
             }
-
         });
-
     });
-
-
 
     // ========================
-
-    // IMAGE ZOOM FEATURE
-
+    // 3. UNIVERSAL ZOOM LOGIC
     // ========================
+    const toggleZoom = (element) => {
+        if (element.classList.contains('fullscreen-active')) {
+            element.classList.remove('fullscreen-active');
+            document.body.classList.remove('no-scroll');
+        } else {
+            // Close any other open zooms first
+            document.querySelectorAll('.fullscreen-active').forEach(el => {
+                el.classList.remove('fullscreen-active');
+            });
+            element.classList.add('fullscreen-active');
+            document.body.classList.add('no-scroll');
+        }
+    };
 
-    const images = document.querySelectorAll('.expandable-image');
-
-
-
-    images.forEach(img => {
-
-        img.addEventListener('click', (e) => {
-
-            e.stopPropagation(); // Stop click from reaching the document
-
-            
-
-            if (img.classList.contains('fullscreen')) {
-
-                img.classList.remove('fullscreen');
-
-            } else {
-
-                // Shrink any OTHER images that might be open first...
-
-                document.querySelectorAll('.expandable-image.fullscreen').forEach(openImg => {
-
-                    openImg.classList.remove('fullscreen');
-
-                });
-
-                // ...and expand this one!
-
-                img.classList.add('fullscreen');
-
-            }
-
+    // Handle Iframes (via Click Shield)
+    document.querySelectorAll('.click-shield').forEach(shield => {
+        shield.addEventListener('click', (e) => {
+            const iframe = shield.parentElement.querySelector('iframe');
+            if (iframe) toggleZoom(iframe);
         });
-
     });
 
-
-
-    // Close the image when clicking anywhere on the background
-
-    document.addEventListener('click', () => {
-
-        document.querySelectorAll('.expandable-image.fullscreen').forEach(img => {
-
-            img.classList.remove('fullscreen');
-
-        });
-
+    // Handle Images
+    document.querySelectorAll('.expandable-image').forEach(img => {
+        img.addEventListener('click', () => toggleZoom(img));
     });
-
-
-
-});
-
-    document.addEventListener('DOMContentLoaded', () => {
-
-    const iframes = document.querySelectorAll('.expandable-iframe');
-
-
-
-    iframes.forEach(iframe => {
-
-        // We wrap the click logic. Note: clicking INSIDE an iframe 
-
-        // won't always trigger this, so a double-click or a 
-
-        // button is usually more reliable.
-
-        iframe.parentElement.addEventListener('click', () => {
-
-            if (iframe.classList.contains('fullscreen')) {
-
-                iframe.classList.remove('fullscreen');
-
-                document.body.classList.remove('no-scroll');
-
-            } else {
-
-                iframe.classList.add('fullscreen');
-
-                document.body.classList.add('no-scroll');
-
-            }
-
-        });
-
-    });
-
-
 
     // Close on Escape key
-
     document.addEventListener('keydown', (e) => {
-
         if (e.key === "Escape") {
-
-            document.querySelectorAll('.expandable-iframe.fullscreen').forEach(el => {
-
-                el.classList.remove('fullscreen');
-
+            document.querySelectorAll('.fullscreen-active').forEach(el => {
+                el.classList.remove('fullscreen-active');
                 document.body.classList.remove('no-scroll');
-
             });
-
         }
-
     });
 
+    // Close when clicking background of a zoomed image
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('fullscreen-active')) {
+            e.target.classList.remove('fullscreen-active');
+            document.body.classList.remove('no-scroll');
+        }
+    });
 });
-
 </script>
 
 </body>
