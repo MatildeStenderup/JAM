@@ -294,8 +294,8 @@ body {
     transform-origin: center center;
 }
 .chart-placeholder iframe#chart3{
-    width: 160% !important;  
-    height: 160% !important; 
+    width: 100% !important;  
+    height: 100% !important; 
     border: none;
     display: block;
     
