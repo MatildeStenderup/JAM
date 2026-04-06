@@ -301,7 +301,7 @@ body {
     
     position: absolute;
     /* translate(X, Y) */
-    transform:translate(-49.5%, -49%) scale(0.82); 
+    transform:translate(-49.5%, -52%) scale(0.82); 
     
     top: 50%;
     left: 50%;
