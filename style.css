@@ -294,14 +294,14 @@ body {
     transform-origin: center center;
 }
 .chart-placeholder iframe#chart3{
-    width: 100% !important;  
-    height: 100% !important; 
+/*    width: 100% !important;  
+    height: 100% !important; */
     border: none;
     display: block;
     
     position: absolute;
     /* translate(X, Y) */
-    transform:translate(-49.5%, -52%) scale(0.82); 
+    transform:translate(-49.5%, -52%) scale(0.55); 
     
     top: 50%;
     left: 50%;
