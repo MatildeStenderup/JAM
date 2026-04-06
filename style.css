@@ -399,3 +399,49 @@ body.no-scroll {
     color: #FF0000;           /* Matches your red accent color */
     text-decoration: none;
 }
+
+.contribution-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.contribution-table th, 
+.contribution-table td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contribution-table th {
+    background-color: rgba(255, 255, 255, 0.1);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* Align the first column to the left for readability */
+.contribution-table td:first-child {
+    text-align: left;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.02);
+    width: 40%;
+}
+
+/* Highlight the 'x' marks */
+.contribution-table td:not(:first-child) {
+    color: #FF0000; /* Matching your red accent color */
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+/* Hover effect for rows */
+.contribution-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
