@@ -315,7 +315,6 @@ body {
     display: block;
     object-fit: contain;
     border: none;
-    transition: all 0.3s ease;
     cursor: zoom-in;
 }
 
